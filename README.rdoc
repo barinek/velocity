@@ -1,0 +1,41 @@
+= Velocity
+
+Simple Rack hander that displays Pivotal Tracker project velocity and variance via the Tracker API
+
+== Local Setup
+
+=== Local Enviroment Variables
+
+From the command line:
+
+    export TRACKER_API_TOKEN=your_tracker_api_key_here
+    export TRACKER_PROJECT_IDS=comma_separated_tracker_project_ids_here
+
+== Heroku Setup
+
+From the command line:
+
+    heroku create --stack cedar
+    heroku rename velocity (or similar)
+
+=== Heroku Add-ons
+
+From the command line:
+
+    heroku addons:add ssl:piggyback
+    heroku addons:add scheduler:standard
+    heroku addons:add memcache:5mb
+    heroku addons:add logging:basic
+
+=== Heroku Enviroment Variables
+
+From the command line:
+
+    heroku config:add RACKER_API_TOKEN=your_tracker_api_key_here
+    heroku config:add RACKER_API_TOKEN=comma_separated_tracker_project_ids_here
+
+=== Heroku Cron example
+
+From the command line:
+
+    heroku run rake harvester:harvest
