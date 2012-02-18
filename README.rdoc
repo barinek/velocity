@@ -2,12 +2,15 @@
 
 Simple Rack hander that displays Pivotal Tracker project velocity and variance via the Tracker API
 
+http://github.com/barinek/velocity/raw/master/example.png
+
 == Local Setup
 
 === Local Enviroment Variables
 
 From the command line:
 
+    export USER_PASSWORD=your_password
     export TRACKER_API_TOKEN=your_tracker_api_key_here
     export TRACKER_PROJECT_IDS=comma_separated_tracker_project_ids_here
 
@@ -31,8 +34,9 @@ From the command line:
 
 From the command line:
 
-    heroku config:add RACKER_API_TOKEN=your_tracker_api_key_here
-    heroku config:add RACKER_API_TOKEN=comma_separated_tracker_project_ids_here
+    heroku config:add USER_PASSWORD=your_password
+    heroku config:add TRACKER_API_TOKEN=your_tracker_api_key_here
+    heroku config:add TRACKER_PROJECT_IDS=comma_separated_tracker_project_ids_here
 
 === Heroku Cron example
 

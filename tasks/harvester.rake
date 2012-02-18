@@ -12,4 +12,8 @@ namespace :harvester do
       puts project
     end
   end
+
+  task :clear_projects do
+    Harvester.clear_projects
+  end
 end

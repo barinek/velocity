@@ -3,7 +3,9 @@ class Harvester
     PivotalTracker::Client.token = ENV['TRACKER_API_TOKEN']
     PivotalTracker::Client.use_ssl = true
 
-    tracker_project_ids = ENV['TRACKER_PROJECT_IDS'].split(",")
+    tracker_project_ids_string = ENV['TRACKER_PROJECT_IDS']
+    tracker_project_ids = []
+    tracker_project_ids = tracker_project_ids_string.split(",") unless tracker_project_ids_string.nil?
 
     projects = []
     tracker_project_ids.each do |project_id|
@@ -42,6 +44,11 @@ class Harvester
     end
 
     projects
+  end
+
+  def self.clear_projects
+    dalli_client = Dalli::Client.new
+    dalli_client.set("projects", nil)
   end
 
   private
