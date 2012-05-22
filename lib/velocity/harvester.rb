@@ -14,6 +14,7 @@ class Harvester
       project = PivotalTracker::Project.find(project_id.to_i)
       iterations = determine_recent_points(project)
       points = iterations.values[0..9]
+      velocity = points.inject(:+) / iterations.size
       stdev = points.size > 0 ? standard_deviation(points) : 0
       points = ([].fill(0, 0..(9-points.size)))+points if points.size < 10
 
